@@ -21,9 +21,17 @@ export class Task {
   @Column({ type: 'enum', enum: TaskStatus, default: TaskStatus.TODO })
   status: TaskStatus;
 
-  @CreateDateColumn()
+  @CreateDateColumn({
+    name: 'created_at',
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({
+    name: 'updated_at',
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   updatedAt: Date;
 }
