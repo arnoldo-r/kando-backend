@@ -14,6 +14,7 @@ import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 import { TaskDto } from './dto/task.dto';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { TaskStatusSummaryDto } from './dto/task-status-summary.dto';
 
 @Controller('task')
 export class TaskController {
@@ -56,5 +57,22 @@ export class TaskController {
   @HttpCode(HttpStatus.OK)
   async remove(@Param('id') id: string): Promise<void> {
     await this.taskService.remove(id);
+  }
+
+  @Get('summary/status')
+  @ApiOperation({ summary: 'Task counts by status' })
+  @ApiResponse({
+    status: 200,
+    description: 'Status summary',
+    schema: {
+      example: {
+        todo: 3,
+        in_progress: 2,
+        completed: 5,
+      },
+    },
+  })
+  async getSummaryStatus(): Promise<TaskStatusSummaryDto> {
+    return await this.taskService.getSummaryStatus();
   }
 }
