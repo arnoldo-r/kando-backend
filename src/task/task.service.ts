@@ -4,7 +4,6 @@ import { UpdateTaskDto } from './dto/update-task.dto';
 import { TaskDto } from './dto/task.dto';
 import { TaskRepository } from './repositories/task.repository';
 import { TaskMapper } from './mappers/task.mapper';
-import { TaskStatusSummaryDto } from './dto/task-status-summary.dto';
 
 @Injectable()
 export class TaskService {
@@ -39,9 +38,5 @@ export class TaskService {
   async remove(id: string): Promise<void> {
     await this.findOne(id);
     await this.taskRepository.delete(id);
-  }
-
-  async getSummaryStatus(): Promise<TaskStatusSummaryDto> {
-    return await this.taskRepository.getSummaryStatus();
   }
 }
