@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TaskModule } from './task/task.module';
+import { StatisticModule } from './statistic/statistic.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { TaskModule } from './task/task.module';
       }),
     }),
     TaskModule,
+    StatisticModule,
   ],
   controllers: [],
   providers: [],
