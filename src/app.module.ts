@@ -3,6 +3,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TaskModule } from './task/task.module';
 import { StatisticModule } from './statistic/statistic.module';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -21,6 +23,8 @@ import { StatisticModule } from './statistic/statistic.module';
     }),
     TaskModule,
     StatisticModule,
+    UserModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
