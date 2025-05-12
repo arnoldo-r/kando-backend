@@ -12,7 +12,7 @@ export class StatisticRepository extends Repository<Task> {
   }
 
   async getStatus(): Promise<ItemDto[]> {
-    type StatusCountRow = { status: TaskStatus; count: string | number };
+    type StatusCountRow = { status: TaskStatus; count: number };
 
     const result = await this.createQueryBuilder('task')
       .select('task.status', 'status')
